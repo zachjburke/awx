@@ -1,6 +1,7 @@
 ---
 - name: Create a file in /var/ansible
-  hosts: all
+  hosts: localhost
+  gather_facts: no
   become: yes # Use sudo to ensure we have the permissions to write to /var/ansible
   tasks:
     - name: Ensure the /var/ansible directory exists
