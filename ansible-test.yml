@@ -1,0 +1,18 @@
+---
+- name: Create a file in /var/ansible
+  hosts: all
+  become: yes # Use sudo to ensure we have the permissions to write to /var/ansible
+  tasks:
+    - name: Ensure the /var/ansible directory exists
+      ansible.builtin.file:
+        path: /var/ansible
+        state: directory
+        mode: "0755" # Sets the permissions of the directory
+
+    - name: Create a file in /var/ansible
+      ansible.builtin.copy:
+        dest: /var/ansible/example.txt
+        content: |
+          Hello, this is a test file.
+          This file was created by an Ansible playbook.
+        mode: "0644" # Sets the permissions of the file
