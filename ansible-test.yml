@@ -1,5 +1,5 @@
 ---
-- name: Create a file in /var/ansible
+- name: Delete files in /var/ansible
   hosts: localhost
   gather_facts: no
   become: yes # Use sudo to ensure we have the permissions to write to /var/ansible
@@ -10,10 +10,13 @@
         state: directory
         mode: "0755" # Sets the permissions of the directory
 
-    - name: Create a file in /var/ansible
-      ansible.builtin.copy:
-        dest: /var/ansible/example-test-2.txt
-        content: |
-          Hello, this is a test file.
-          This file was created by an Ansible playbook.
-        mode: "0644" # Sets the permissions of the file
+    - name: Delete multiple files
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /var/ansible/test1.txt
+        - /var/ansible/test.txt
+        - /var/ansible/example.txt
+        - /var/ansible/example-test.txt
+        - /var/ansible/example-test-2.txt
