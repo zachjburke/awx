@@ -3,12 +3,11 @@
   hosts: localhost
   gather_facts: no
   tasks:
-    - name: Create Tunnel Interface
-      expedient.paloalto.vpan_tunnelint:
-        endpoint: sdtest-vpan01.custcbb.local
-        api_user: admin
-        api_pass: "{{ password }}"
-        unit: "4023"
-        comment: "test"
-        ip: "1.1.1.1"
-      register: tunnelint_results
+  - name: Get list of installed collections
+    command: ansible-galaxy collection list
+    register: installed_collections
+
+  - name: Print list of installed collections
+    debug:
+      var: installed_collections.stdout_lines
+      
