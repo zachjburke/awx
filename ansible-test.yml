@@ -4,7 +4,7 @@
   gather_facts: no
   tasks:
     - name: Create Tunnel Interface
-      expedient.paloalto.pa_tunnelint:
+      expedient.paloalto.vpan_tunnelint:
         endpoint: sdtest-vpan01.custcbb.local
         api_user: admin
         api_pass: "{{ password }}"
