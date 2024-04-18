@@ -12,7 +12,7 @@
 
     - name: Create a file in /var/ansible
       ansible.builtin.copy:
-        dest: /var/ansible/example-test.txt
+        dest: /var/ansible/example-test-2.txt
         content: |
           Hello, this is a test file.
           This file was created by an Ansible playbook.
