@@ -10,4 +10,7 @@
   - name: Print list of installed collections
     debug:
       var: installed_collections.stdout_lines
+
+  - name: get smc files
+    command: cat /usr/share/ansible/collections/ansible_collections/expedient/smc/plugins/module_utils/smc.py
       
