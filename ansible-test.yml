@@ -13,4 +13,8 @@
 
   - name: get smc files
     command: cat /usr/share/ansible/collections/ansible_collections/expedient/smc/plugins/module_utils/smc.py
-      
+    register: smc
+
+  - name: print smc
+    debug:
+      var: smc
