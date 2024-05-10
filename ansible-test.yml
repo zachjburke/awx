@@ -22,3 +22,6 @@
   - name: print smc
     debug:
       var: smc
+
+  - name: ping host
+    ansible.builtin.ping: acm-fw.expedient.com
