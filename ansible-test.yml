@@ -23,5 +23,6 @@
     debug:
       var: smc
 
-  - name: ping host
-    ansible.builtin.ping: acm-fw.expedient.com
+  - name: Test reachability to 10.10.10.10 using default vrf
+    ansible.netcommon.net_ping:
+      dest: acm-fw.expedient.com
