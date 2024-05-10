@@ -11,10 +11,6 @@
     debug:
       var: installed_collections.stdout_lines
 
-  - name: Pause for 5 minute
-    ansible.builtin.pause:
-      minutes: 5
-
   - name: get smc files
     command: cat /usr/share/ansible/collections/ansible_collections/expedient/smc/plugins/module_utils/smc.py
     register: smc
