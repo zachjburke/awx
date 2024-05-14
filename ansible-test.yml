@@ -11,6 +11,16 @@
     debug:
       var: installed_collections.stdout_lines
 
-  - name: get smc files
-    command: touch /var/ansible/test1.txt
-    register: smc
+  - name: Ensure the /var/ansible directory exists
+    ansible.builtin.file:
+       path: /var/ansible
+       state: directory
+      mode: "0755" # Sets the permissions of the directory
+
+  - name: Create a file in /var/ansible
+    ansible.builtin.copy:
+      dest: /var/ansible/example.txt
+      content: |
+        Hello, this is a test file.
+        This file was created by an Ansible playbook.
+      mode: "0644" # Sets the permissions of the file
