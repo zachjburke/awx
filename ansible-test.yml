@@ -12,6 +12,10 @@
     debug:
       var: installed_collections.stdout_lines
 
+  - name: wait 2 minutes
+    ansible.builtin.pause:
+      minutes: 2
+
   - name: Ensure the /var/ansible directory exists
     ansible.builtin.file:
        path: /var/ansible
