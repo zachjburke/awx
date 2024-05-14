@@ -24,4 +24,4 @@
       content: |
         Hello, this is a test file.
         This file was created by an Ansible playbook.
-      mode: "0644
+      mode: "0644"
