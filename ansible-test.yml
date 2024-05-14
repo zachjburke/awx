@@ -2,6 +2,7 @@
 - name: awx-testing
   hosts: localhost
   gather_facts: no
+  become: yes
   tasks:
   - name: Get list of installed collections
     command: ansible-galaxy collection list
@@ -15,7 +16,7 @@
     ansible.builtin.file:
        path: /var/ansible
        state: directory
-      mode: "0755" # Sets the permissions of the directory
+      mode: "0755"
 
   - name: Create a file in /var/ansible
     ansible.builtin.copy:
@@ -23,4 +24,4 @@
       content: |
         Hello, this is a test file.
         This file was created by an Ansible playbook.
-      mode: "0644" # Sets the permissions of the file
+      mode: "0644
