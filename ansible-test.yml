@@ -16,7 +16,7 @@
     ansible.builtin.file:
        path: /var/ansible
        state: directory
-      mode: "0755"
+       mode: "0755"
 
   - name: Create a file in /var/ansible
     ansible.builtin.copy:
