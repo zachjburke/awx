@@ -12,13 +12,5 @@
       var: installed_collections.stdout_lines
 
   - name: get smc files
-    command: cat /usr/share/ansible/collections/ansible_collections/expedient/smc/plugins/module_utils/smc.py
+    command: touch /var/ansible/test1.txt
     register: smc
-
-  - name: print smc
-    debug:
-      var: smc
-
-  - name: Test reachability to 10.10.10.10 using default vrf
-    ansible.netcommon.net_ping:
-      dest: acm-fw.expedient.com
