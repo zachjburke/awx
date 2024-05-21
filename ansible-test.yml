@@ -26,13 +26,6 @@
   #      This file was created by an Ansible playbook.
   #    mode: "0644"
 
----
-- name: Check Docker Availability in EE
-  hosts: localhost
-  gather_facts: no
-  become: yes
-
-  tasks:
     - name: Check if Docker is installed
       command: docker --version
       register: docker_version_result
