@@ -12,20 +12,38 @@
     debug:
       var: installed_collections.stdout_lines
 
-  - name: wait 2 minutes
-    ansible.builtin.pause:
-      minutes: 2
-
   - name: Ensure the /var/ansible directory exists
     ansible.builtin.file:
        path: /var/ansible
        state: directory
        mode: "0755"
 
-  - name: Create a file in /var/ansible
-    ansible.builtin.copy:
-      dest: /var/ansible/example.txt
-      content: |
-        Hello, this is a test file.
-        This file was created by an Ansible playbook.
-      mode: "0644"
+  #- name: Create a file in /var/ansible
+  #  ansible.builtin.copy:
+  #    dest: /var/ansible/example.txt
+  #    content: |
+  #      Hello, this is a test file.
+  #      This file was created by an Ansible playbook.
+  #    mode: "0644"
+
+---
+- name: Check Docker Availability in EE
+  hosts: localhost
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Check if Docker is installed
+      command: docker --version
+      register: docker_version_result
+      ignore_errors: yes
+
+    - name: Show Docker version if installed
+      debug:
+        msg: "Docker is installed: {{ docker_version_result.stdout }}"
+      when: docker_version_result.rc == 0
+
+    - name: Show error if Docker is not installed
+      debug:
+        msg: "Docker is not installed or not accessible"
+      when: docker_version_result.rc != 0
