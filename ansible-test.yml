@@ -2,7 +2,6 @@
 - name: awx-testing
   hosts: localhost
   gather_facts: no
-  become: yes
   tasks:
   - name: Get list of installed collections
     command: ansible-galaxy collection list
